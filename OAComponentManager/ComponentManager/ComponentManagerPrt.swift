@@ -10,5 +10,5 @@ import UIKit
 protocol ComponentManagerPrt: class {
     func canOpenURL(_ url: URL) -> Bool
     func connectToOpenURL(_ url: URL, parameters: Dictionary<String, Any>) -> UIViewController?
-    func connectToHandle(_ prt: Protocol) -> Any?
+    func connectToHandle<T: Any>(_ prt: T.Type) -> Any?
 }
