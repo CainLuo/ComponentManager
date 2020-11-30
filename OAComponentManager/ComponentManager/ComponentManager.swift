@@ -45,7 +45,7 @@ class ComponentManager {
         let userParameters: [String: Any] = [:]
         connectorMap.forEach { (key, value) in
             queryCount += 1
-            let vc = value.connectToOpenURL(url, parameters: userParameters)
+            let vc = value.connectToOpenURL(url, parameters: userParameters, completion: nil)
             
             if let vc = vc, vc.isKind(of: UIViewController.self) {
                 if vc.isKind(of: ErrorTipViewController.self) {
@@ -105,7 +105,7 @@ class ComponentManager {
         
         connectorMap.forEach { (key, value) in
             queryCount += 1
-            vc = value.connectToOpenURL(url, parameters: parameters)
+            vc = value.connectToOpenURL(url, parameters: parameters, completion: nil)
             if let resultVC = vc,
                 resultVC.isKind(of: UIViewController.self) {
                 return
@@ -137,11 +137,13 @@ class ComponentManager {
     /// 服务调用接口
     /// - Parameter prt: ComponentManagerPrt
     /// - Returns: Any
-    static func serviceForProtocol<T: Any>(_ prt: T.Type) -> Any? {
-        guard !connectorMap.isEmpty else { return nil }
-        let result = connectorMap.map { $0.value.connectToHandle(prt) }.first as Any
-        return result
-    }
+//    static func serviceForProtocol<T: Any>(_ prt: T.Type) -> T? {
+//        guard !connectorMap.isEmpty else { return nil }
+//        if let results = connectorMap.map({ $0.value.connectToHandle(prt) }).filter({ $0 != nil }).first,
+//           return results
+//        }
+//        return nil
+//    }
     
     /// Private Methos
     /// - Parameter vcName: UIViewController class name
