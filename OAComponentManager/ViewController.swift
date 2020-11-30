@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pushToModuleA(_ sender: Any) {
-        let vc = ComponentManager.routeURL(URL(string: "productScheme://ModuleB")!)
+        _ = ComponentManager.routeURL(URL(string: "productScheme://ModuleB")!, parameters: [routerModeKey: NavigatorType.present])
     }
 }
 
