@@ -7,6 +7,9 @@
 
 import UIKit
 
+let routerModeKey = "routerModeKey"
+let routeViewControllerKey = "routeViewControllerKey"
+
 private var connectorMap: [String: ComponentManagerPrt] = [:]
 
 class ComponentManager {
