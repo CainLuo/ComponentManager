@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D02B53D2574E88B0002C981 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02B53C2574E88B0002C981 /* Navigator.swift */; };
 		4D9488B92574916E00800FFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9488B82574916E00800FFA /* AppDelegate.swift */; };
 		4D9488BD2574916E00800FFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9488BC2574916E00800FFA /* ViewController.swift */; };
 		4D9488C02574916E00800FFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9488BE2574916E00800FFA /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D02B53C2574E88B0002C981 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		4D9488B52574916E00800FFA /* OAComponentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAComponentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9488B82574916E00800FFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D9488BC2574916E00800FFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				4D9488D02574919800800FFA /* ErrorTipViewController.swift */,
 				4D9488D12574919800800FFA /* ComponentManager.swift */,
 				4D9488D22574919800800FFA /* ComponentManagerPrt.swift */,
+				4D02B53C2574E88B0002C981 /* Navigator.swift */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				4D9488DD2574919800800FFA /* ModuleAViewController.swift in Sources */,
 				4D9488BD2574916E00800FFA /* ViewController.swift in Sources */,
+				4D02B53D2574E88B0002C981 /* Navigator.swift in Sources */,
 				4D9488DA2574919800800FFA /* ComponentManagerPrt.swift in Sources */,
 				4D9488B92574916E00800FFA /* AppDelegate.swift in Sources */,
 				4D9488DE2574919800800FFA /* Storyboard.swift in Sources */,
