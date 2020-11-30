@@ -20,7 +20,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pushToModuleA(_ sender: Any) {
-        _ = ComponentManager.routeURL(URL(string: "productScheme://ModuleB")!, parameters: [routerModeKey: NavigatorType.present])
+//        _ = ComponentManager.routeURL(ModuleRouter.moduleA, parameters: [routerModeKey: NavigatorType.present])
+        
+        let prt = ComponentManager.serviceForProtocol(ModuleAServiceProtocol.self) as? ModuleAConnector
+        prt?.show("gagga", cancel: { info in
+            print("cancel: -------------------------------------:\(info)")
+        }, done: { info in
+            print("done: -------------------------------------:\(info)")
+        })
     }
 }
 
+enum ModuleRouter {
+    static let moduleA = URL(string: "productScheme://ModuleAAAAAA")!
+}
