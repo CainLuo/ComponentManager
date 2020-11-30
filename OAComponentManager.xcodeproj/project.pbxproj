@@ -20,6 +20,8 @@
 		4D9488DC2574919800800FFA /* ModuleAConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9488D52574919800800FFA /* ModuleAConnector.swift */; };
 		4D9488DD2574919800800FFA /* ModuleAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9488D62574919800800FFA /* ModuleAViewController.swift */; };
 		4D9488DE2574919800800FFA /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9488D72574919800800FFA /* Storyboard.swift */; };
+		4DC380C42575041700E2A1AE /* ModuleAServicePrt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC380C32575041700E2A1AE /* ModuleAServicePrt.swift */; };
+		4DC380C72575104400E2A1AE /* ModuleAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC380C62575104400E2A1AE /* ModuleAItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		4D9488D52574919800800FFA /* ModuleAConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleAConnector.swift; sourceTree = "<group>"; };
 		4D9488D62574919800800FFA /* ModuleAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleAViewController.swift; sourceTree = "<group>"; };
 		4D9488D72574919800800FFA /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		4DC380C32575041700E2A1AE /* ModuleAServicePrt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAServicePrt.swift; sourceTree = "<group>"; };
+		4DC380C62575104400E2A1AE /* ModuleAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				4D9488D42574919800800FFA /* ModuleA.storyboard */,
+				4DC380C32575041700E2A1AE /* ModuleAServicePrt.swift */,
 				4D9488D52574919800800FFA /* ModuleAConnector.swift */,
 				4D9488D62574919800800FFA /* ModuleAViewController.swift */,
+				4DC380C62575104400E2A1AE /* ModuleAItem.swift */,
 			);
 			path = ModuleA;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 				4D9488DE2574919800800FFA /* Storyboard.swift in Sources */,
 				4D9488DC2574919800800FFA /* ModuleAConnector.swift in Sources */,
 				4D9488D82574919800800FFA /* ErrorTipViewController.swift in Sources */,
+				4DC380C42575041700E2A1AE /* ModuleAServicePrt.swift in Sources */,
 				4D9488D92574919800800FFA /* ComponentManager.swift in Sources */,
+				4DC380C72575104400E2A1AE /* ModuleAItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
