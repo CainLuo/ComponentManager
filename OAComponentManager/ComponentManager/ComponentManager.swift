@@ -26,21 +26,14 @@ class ComponentManager {
     /// - Returns: Bool
     static func canRouteURL(_ url: URL) -> Bool {
         if connectorMap.isEmpty { return false }
-        
-        var isSuccess = false
-        
-        let a = connectorMap.map { $0.value.canOpenURL(url) }.first ?? false
-        
-        connectorMap.forEach { (key, value) in
-            if value.canOpenURL(url) {
-                isSuccess = true
-                return
-            }
-        }
-        
-        return isSuccess
+        return connectorMap.map { $0.value.canOpenURL(url) }.first ?? false
     }
     
+    /// 通过URL完成页面跳转
+    /// - Parameters:
+    ///   - url: URL地址
+    ///   - parameters: 需要传参的Dictionary
+    /// - Returns: Bool, true or false
     static func routeURL(_ url: URL, parameters: Dictionary<String, Any>? = nil) -> Bool {
         if connectorMap.isEmpty { return false }
 
@@ -65,8 +58,7 @@ class ComponentManager {
                         #endif
                     }
                     
-                } else  if let vcName = vc.className.components(separatedBy: ".").last,
-                           vcName == "UIViewController" {
+                } else if checkViewController(vc.className) {
                     isSuccess = true
                 } else {
                     
@@ -92,6 +84,11 @@ class ComponentManager {
         return isSuccess
     }
 
+    /// 通过URL获取UIViewController的实例类
+    /// - Parameters:
+    ///   - url: URL地址
+    ///   - parameters: 需要传参的Dictionary参数
+    /// - Returns: UIViewController
     static func viewControllerForURL(_ url: URL, parameters: Dictionary<String, Any>? = nil) -> UIViewController? {
         if connectorMap.isEmpty { return nil }
 
@@ -120,8 +117,7 @@ class ComponentManager {
                 // Show Debug
                 #endif
                 return nil
-            } else if let vcName = vc.className.components(separatedBy: ".").last,
-                      vcName == "UIViewController" {
+            } else if checkViewController(vc.className) {
                 return nil
             } else {
                 return vc
@@ -130,19 +126,20 @@ class ComponentManager {
         
         return nil
     }
-
+    
+    /// 服务调用接口
+    /// - Parameter prt: ComponentManagerPrt
+    /// - Returns: Any
     static func serviceForProtocol(_ prt: ComponentManagerPrt) -> Any? {
-        if connectorMap.isEmpty { return nil }
-
-        var result: Any?
-        connectorMap.forEach { (key, value) in
-            result = value.connectToHandle(prt as! Protocol)
-            if result != nil {
-                return
-            }
-        }
-        
-        return result
+        guard !connectorMap.isEmpty, let prt = prt as? Protocol else { return nil }
+        return connectorMap.map { $0.value.connectToHandle(prt) }.first as Any
+    }
+    
+    /// Private Methos
+    /// - Parameter vcName: UIViewController class name
+    /// - Returns: Bool
+    private static func checkViewController(_ vcName: String) -> Bool {
+        return vcName.components(separatedBy: ".").last == "UIViewController"
     }
 }
 
