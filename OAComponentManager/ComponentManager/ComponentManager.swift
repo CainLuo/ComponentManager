@@ -66,11 +66,15 @@ class ComponentManager {
                 } else {
                     
                     // Navigation push
-                    if let tab = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController,
-                       let nav = tab.viewControllers?.first as? UINavigationController {
-                        nav.pushViewController(vc, animated: true)
-                    }
+//                    if let tab = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController,
+//                       let nav = tab.viewControllers?.first as? UINavigationController {
+//                        nav.pushViewController(vc, animated: true)
+//                    }
                     
+                    if let parameters = parameters {
+                        Navigator.instance().showURL(vc, base: parameters[routeViewControllerKey] as? UIViewController,
+                                                     routerType: (parameters[routerModeKey] != nil) ? parameters[routerModeKey] as! NavigatorType : .push)
+                    }
                     isSuccess = true
                 }
                 return
