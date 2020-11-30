@@ -137,9 +137,10 @@ class ComponentManager {
     /// 服务调用接口
     /// - Parameter prt: ComponentManagerPrt
     /// - Returns: Any
-    static func serviceForProtocol(_ prt: ComponentManagerPrt) -> Any? {
-        guard !connectorMap.isEmpty, let prt = prt as? Protocol else { return nil }
-        return connectorMap.map { $0.value.connectToHandle(prt) }.first as Any
+    static func serviceForProtocol<T: Any>(_ prt: T.Type) -> Any? {
+        guard !connectorMap.isEmpty else { return nil }
+        let result = connectorMap.map { $0.value.connectToHandle(prt) }.first as Any
+        return result
     }
     
     /// Private Methos
