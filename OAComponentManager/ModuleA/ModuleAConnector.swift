@@ -25,19 +25,11 @@ extension ModuleAConnector: ComponentManagerPrt {
         return url.host == "ModuleB"
     }
     
-    func connectToOpenURL(_ url: URL, parameters: Dictionary<String, Any>) -> UIViewController? {
+    func connectToOpenURL(_ url: URL, parameters: Dictionary<String, Any>?, completion: (([String : Any]) -> Void)?) -> UIViewController? {
         guard canOpenURL(url) else { return nil }
         
         let vc = ModuleAViewController.configureWith()
         return vc
-    }
-    
-    func connectToHandle<T>(_ prt: T.Type) -> Any? {
-        if prt == ModuleAServiceProtocol.self {
-            return ModuleAConnector.instance()
-        }
-        
-        return nil
     }
 }
 
