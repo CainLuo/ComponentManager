@@ -22,13 +22,14 @@ class ModuleAConnector: NSObject {
 // MARK: ComponentManagerPrt
 extension ModuleAConnector: ComponentManagerPrt {
     func canOpenURL(_ url: URL) -> Bool {
-        return url.host == "ModuleB"
+        return url.host == "ModuleAAAAAA"
     }
     
     func connectToOpenURL(_ url: URL, parameters: Dictionary<String, Any>?, completion: (([String : Any]) -> Void)?) -> UIViewController? {
         guard canOpenURL(url) else { return nil }
         
         let vc = ModuleAViewController.configureWith()
+        vc.completion = completion
         return vc
     }
 }
