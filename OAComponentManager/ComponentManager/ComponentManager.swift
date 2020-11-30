@@ -37,7 +37,7 @@ class ComponentManager {
     ///   - url: URL地址
     ///   - parameters: 需要传参的Dictionary
     /// - Returns: Bool, true or false
-    static func routeURL(_ url: URL, parameters: Dictionary<String, Any>? = nil) -> Bool {
+    static func routeURL(_ url: URL, parameters: Dictionary<String, Any>? = nil, completion: (([String: Any]) -> Void)? = nil) -> Bool {
         if connectorMap.isEmpty { return false }
 
         var isSuccess = false
@@ -45,7 +45,7 @@ class ComponentManager {
         let userParameters: [String: Any] = [:]
         connectorMap.forEach { (key, value) in
             queryCount += 1
-            let vc = value.connectToOpenURL(url, parameters: userParameters, completion: nil)
+            let vc = value.connectToOpenURL(url, parameters: userParameters, completion: completion)
             
             if let vc = vc, vc.isKind(of: UIViewController.self) {
                 if vc.isKind(of: ErrorTipViewController.self) {
