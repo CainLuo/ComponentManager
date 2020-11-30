@@ -22,12 +22,12 @@ class ViewController: UIViewController {
     @IBAction func pushToModuleA(_ sender: Any) {
 //        _ = ComponentManager.routeURL(ModuleRouter.moduleA, parameters: [routerModeKey: NavigatorType.present])
         
-        let prt = ComponentManager.serviceForProtocol(ModuleAServiceProtocol.self) as? ModuleAConnector
-        prt?.show("gagga", cancel: { info in
-            print("cancel: -------------------------------------:\(info)")
-        }, done: { info in
-            print("done: -------------------------------------:\(info)")
-        })
+//        let prt = ComponentManager.serviceForProtocol(ModuleAServiceProtocol.self) as? ModuleAConnector
+//        prt?.show("gagga", cancel: { info in
+//            print("cancel: -------------------------------------:\(info)")
+//        }, done: { info in
+//            print("done: -------------------------------------:\(info)")
+//        })
     }
 }
 
