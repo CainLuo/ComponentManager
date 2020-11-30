@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        ModuleAConnector.instance.register()
+        ModuleAConnector.instance().register()
         
         let tabBar = UITabBarController()
         
@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc1.title = "A"
         vc1.view.backgroundColor = .red
         
-        var nav2: UINavigationController!
-        if let vc2 = ComponentManager.viewControllerForURL(URL(string: "productScheme://ModuleB")!) {
+        var nav2: UINavigationController?
+        if let vc2 = ComponentManager.viewControllerForURL(URL(string: "productScheme://ModuleAAAAAA")!) {
             vc2.title = "vc2"
             nav2 = UINavigationController(rootViewController: vc2)
         }
@@ -34,7 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc3.view.backgroundColor = .yellow
         let nav3 = UINavigationController(rootViewController: vc3)
 
-        tabBar.viewControllers = [nav1, nav2, nav3]
+        if let nav2 = nav2 {
+            tabBar.viewControllers = [nav1, nav2, nav3]
+        } else {
+            tabBar.viewControllers = [nav1, nav3]
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
