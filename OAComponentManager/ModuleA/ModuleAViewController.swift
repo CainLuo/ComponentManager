@@ -9,6 +9,8 @@ import UIKit
 
 class ModuleAViewController: UIViewController {
     
+    var completion: (([String : Any]) -> Void)?
+    
     static func configureWith() -> ModuleAViewController {
         let vc = Storyboard.ModuleA.instantiate(ModuleAViewController.self)
         return vc
@@ -19,5 +21,11 @@ class ModuleAViewController: UIViewController {
         title = "ModuleA"
         
         view.backgroundColor = .black
-    }    
+    }
+    
+    @IBAction func tapAction(_ sender: Any) {
+        if let completion = completion {
+            completion(["ModuleAViewController": 123123123])
+        }
+    }
 }
