@@ -57,7 +57,7 @@ class Navigator {
 
 // MARK: Push Type Methods
 extension Navigator {
-    func push(_ vc: UIViewController, base: UIViewController?) {
+    private func push(_ vc: UIViewController, base: UIViewController?) {
         var base = base
         if base == nil {
             base = topViewController()
@@ -78,7 +78,7 @@ extension Navigator {
 
 // MARK: Present Type Methods
 extension Navigator {
-    func present(_ vc: UIViewController, base: UIViewController?) {
+    private func present(_ vc: UIViewController, base: UIViewController?) {
         var base = base
         if base == nil {
             base = topViewController()
@@ -101,7 +101,7 @@ extension Navigator {
 
 // MARK: Pop To Type Methods
 extension Navigator {
-    func popTo(_ vc: UIViewController, base: UIViewController?) {
+    private func popTo(_ vc: UIViewController, base: UIViewController?) {
         guard let root = UIApplication.shared.windows.first?.rootViewController else { return }
         
         if let tabBar = root as? UITabBarController, let vcs = tabBar.viewControllers {
@@ -135,7 +135,7 @@ extension Navigator {
         }
     }
     
-    func popTo(_ vc: UIViewController, navi: UINavigationController) -> Bool {
+    private func popTo(_ vc: UIViewController, navi: UINavigationController) -> Bool {
         
         let count = navi.viewControllers.count
         if count == 0 { return false }
