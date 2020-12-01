@@ -64,13 +64,6 @@ class ComponentManager {
                 } else if checkViewController(vc.className) {
                     isSuccess = true
                 } else {
-                    
-                    // Navigation push
-//                    if let tab = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController,
-//                       let nav = tab.viewControllers?.first as? UINavigationController {
-//                        nav.pushViewController(vc, animated: true)
-//                    }
-                    
                     if let parameters = parameters {
                         Navigator.instance().showURL(vc, base: parameters[routeViewControllerKey] as? UIViewController,
                                                      routerType: (parameters[routerModeKey] != nil) ? parameters[routerModeKey] as! NavigatorType : .push)
@@ -133,26 +126,9 @@ class ComponentManager {
         
         return nil
     }
-    
-    /// 服务调用接口
-    /// - Parameter prt: ComponentManagerPrt
-    /// - Returns: Any
-//    static func serviceForProtocol<T: Any>(_ prt: T.Type) -> T? {
-//        guard !connectorMap.isEmpty else { return nil }
-//        if let results = connectorMap.map({ $0.value.connectToHandle(prt) }).filter({ $0 != nil }).first,
-//           return results
-//        }
-//        return nil
-//    }
-    
-    /// Private Methos
-    /// - Parameter vcName: UIViewController class name
-    /// - Returns: Bool
-    private static func checkViewController(_ vcName: String) -> Bool {
-        return vcName.components(separatedBy: ".").last == "UIViewController"
-    }
 }
 
+// MARK: Private Methos
 extension ComponentManager {
     
     /// 获取URL中的拼接参数
@@ -160,7 +136,7 @@ extension ComponentManager {
     ///   - url: URL
     ///   - parameters: Dictionary<String, Any>
     /// - Returns: Dictionary<String, Any>
-    static func userParameters(_ url: URL, parameters: [String: Any]?) -> [String: Any]? {
+    private static func userParameters(_ url: URL, parameters: [String: Any]?) -> [String: Any]? {
         guard parameters == nil else { return nil }
         
         var parameters: [String: Any] = [:]
@@ -174,8 +150,16 @@ extension ComponentManager {
                 
         return parameters
     }
+    
+    /// Private Methos
+    /// - Parameter vcName: UIViewController class name
+    /// - Returns: Bool
+    private static func checkViewController(_ vcName: String) -> Bool {
+        return vcName.components(separatedBy: ".").last == "UIViewController"
+    }
 }
 
+// MARK: Private Methos
 extension NSObject {
     fileprivate class var className: String {
         return String(describing: self)
