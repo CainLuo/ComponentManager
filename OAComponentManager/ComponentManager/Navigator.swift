@@ -14,7 +14,12 @@ enum NavigatorType {
     case popTo      // pop to the viewController already in NavigationController or tabBarController
 }
 
-fileprivate typealias navigatorRouterBlock = (_ vc: UIViewController, _ base: UIViewController, _ routerType: NavigatorType) -> Bool
+enum NavigatorScreenType {
+    case normal
+    case fullScreen // present full secreen
+}
+
+fileprivate typealias navigatorRouterBlock = (_ vc: UIViewController, _ base: UIViewController, _ routerType: NavigatorType, _ screenType: NavigatorScreenType) -> Bool
 
 class Navigator {
     
@@ -29,7 +34,7 @@ class Navigator {
     
     /// 拦截跳转方式
     /// - Parameter completion: (_ vc: UIViewController, _ base: UIViewController, _ routerType: NavigatorType) -> Bool
-    func hockRouter(completion: @escaping(UIViewController, UIViewController, NavigatorType) -> Bool) {
+    func hockRouter(completion: @escaping(UIViewController, UIViewController, NavigatorType, NavigatorScreenType) -> Bool) {
         routeBlock = completion
     }
     
@@ -38,7 +43,7 @@ class Navigator {
     ///   - vc: UIViewController, 当前需要Present的Controller
     ///   - base: UIViewController, 展示的BaseViewController
     ///   - routerType: NavigatorType, 跳转方式
-    func showURL(_ vc: UIViewController, base: UIViewController?, routerType: NavigatorType) {
+    func showURL(_ vc: UIViewController, base: UIViewController?, routerType: NavigatorType, screenType: NavigatorScreenType = .normal) {
         switch routerType {
         case .push, .none:
             push(vc, base: base)
@@ -166,14 +171,14 @@ extension Navigator {
 
 // MARK: 外部不能调用该类别中的方法，仅供Busmediator中调用
 extension Navigator {
-    func hookURL(_ vc: UIViewController, base: UIViewController, routerType: NavigatorType) {
+    func hookURL(_ vc: UIViewController, base: UIViewController, routerType: NavigatorType, screenType: NavigatorScreenType = .normal) {
         var success = false
         if let routeBlock = routeBlock {
-            success = routeBlock(vc, base, routerType)
+            success = routeBlock(vc, base, routerType, screenType)
         }
         
         if !success {
-            showURL(vc, base: base, routerType: routerType)
+            showURL(vc, base: base, routerType: routerType, screenType: screenType)
         }
     }
 }
